@@ -13,7 +13,7 @@ public class Caixa extends javax.swing.JFrame {
     public Caixa() {
         initComponents();
         conexao.conexao();
-        preencherTabela("select * from pesquisa order by id desc limit 5");
+        preencherTabela("select * from caixa order by id desc limit 5");
         
         conexao.executa("select * from caixa order by nome");
         jCNome.removeAllItems();
@@ -262,7 +262,7 @@ public class Caixa extends javax.swing.JFrame {
             pst.setString(4, jTModelo.getText());
             pst.setString(5, jTNumero.getText());
             pst.executeUpdate();
-            preencherTabela("select * from pesquisa order by id desc limit 5");
+            preencherTabela("select * from caixa order by id desc limit 5");
             JOptionPane.showMessageDialog( null, "Dados Enviados !");
             
         } catch (SQLException ex) {
@@ -289,7 +289,7 @@ public class Caixa extends javax.swing.JFrame {
             PreparedStatement pst =  conexao.con.prepareStatement("delete from "
                     + "caixa where nome = ?");
             pst.setString(1,jTNome.getText() );
-            preencherTabela("select * from caixa order by id desc limit 5");
+            preencherTabela("select * from pesquisa order by id desc limit 5");
              JOptionPane.showMessageDialog( null, "Dados Excluidos !");
             pst.execute();
         } catch (SQLException ex) {
